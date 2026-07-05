@@ -1,9 +1,14 @@
+"""Flask server for the emotion detection web application."""
+
 from flask import Flask,request,render_template
 from EmotionDetection.emotion_detection import emotion_detector
 app = Flask("Emotion Detector")
 
 @app.route("/emotionDetector",methods=["GET"])
-def emotionDetector():
+def emotion_detection():
+    """Analyze the request text and return the formatted emotion response."""
+
+
     text_to_analyze = request.args.get("textToAnalyze")
     # print(f"text_to_analyze {text_to_analyze}")
     response =  emotion_detector(text_to_analyze)
@@ -24,7 +29,7 @@ def emotionDetector():
     f"For the given statement, the system response is "
     f"'anger': {anger}, 'disgust': {disgust}, 'fear': {fear}, "
     f"'joy': {joy} and 'sadness': {sadness}. "
-    f"The dominant emotion is {dominant}."      
+    f"The dominant emotion is {dominant}."
     )
 
 
@@ -33,6 +38,8 @@ def emotionDetector():
 
 @app.route("/",methods=["GET"])
 def render_index_page():
+    """Render the home page."""
+
     return render_template("index.html")
 
 
