@@ -10,7 +10,7 @@ def emotionDetector():
 
     if response['dominant_emotion'] is None:
         return "Invalid text! Please try again!"
-
+    
     anger   = response['anger']
     disgust = response['disgust']
     fear    = response['fear']
@@ -32,9 +32,10 @@ def emotionDetector():
 
 
 @app.route("/",methods=["GET"])
-def render_index_page():
+def render_index_page():    
     return render_template("index.html")
 
 
 if __name__=="__main__":
     app.run("0.0.0.0",5000,debug=True)
+
