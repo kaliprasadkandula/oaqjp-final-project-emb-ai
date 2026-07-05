@@ -1,4 +1,4 @@
-from flask import Flask,request
+from flask import Flask,request,render_template
 from EmotionDetection.emotion_detection import emotion_detector
 app = Flask("Emotion Detector")
 
@@ -27,9 +27,8 @@ def emotionDetector():
 
 
 @app.route("/",methods=["GET"])
-def greet():
-    
-    return "hi"
+def render_index_page():    
+    return render_template("index.html")
 
 
 if __name__=="__main__":
